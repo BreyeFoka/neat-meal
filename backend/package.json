@@ -1,22 +1,42 @@
 {
-  "name": "backend",
+  "name": "neat-meal-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Backend API for NeatMeal - A student-focused recipe finding app",
+  "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js"
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "test-server": "node src/test-server.js",
+    "seed": "node -e \"import('./src/utils/seed.js').then(m => m.seedDatabase())\"",
+    "db:setup": "npm run seed",
+    "test": "echo 'Tests not implemented yet' && exit 0",
+    "generate-jwt-secret": "node -e \"console.log('JWT_SECRET=' + require('crypto').randomBytes(32).toString('hex'))\""
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "recipes",
+    "students",
+    "food",
+    "api",
+    "express",
+    "drizzle"
+  ],
+  "author": "Your Name",
   "license": "ISC",
   "type": "module",
   "dependencies": {
     "@neondatabase/serverless": "^1.0.1",
+    "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "cron": "^4.3.3",
     "dotenv": "^17.2.1",
     "drizzle-orm": "^0.44.4",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "rate-limiter-flexible": "^7.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
